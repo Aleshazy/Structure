@@ -1,4 +1,56 @@
-#include <stdio.h> 
+#include <stdio.h>
+#include "student_manager.h"
+
+int main() {
+    struct Students arrayOFStudents[100] = {
+        {"AA", "aa", 18, "PX-23"},
+        {"aaa", "bb", 17, "PX-24"},
+        {"a", "cc", 16, "PX-25"},
+        {"D", "dd", 15, "PX-25"}
+    };
+    int size = 4;
+
+    printf("1. Add students\n2. Delete student\n3. Edit students\n4. Sort by Name\n5. Sort by Surname\n6. Sort by Age\n7. Sort by Program\n8. Save to file\n9. Load from file\n");
+    int choice;
+    scanf("%d", &choice);
+
+    if (choice == 1) {
+        addStudent(arrayOFStudents, &size);
+    } else if (choice == 2) {
+        int index;
+        printf("Enter index to delete: ");
+        scanf("%d", &index);
+        deleteStudent(arrayOFStudents, &size, index);
+    } else if (choice == 3) {
+        int index;
+        printf("Enter index to edit: ");
+        scanf("%d", &index);
+        editStudent(arrayOFStudents, index);
+    } else if (choice == 4) {
+        sortByName(arrayOFStudents, size);
+    } else if (choice == 5) {
+        sortBySurname(arrayOFStudents, size);
+    } else if (choice == 6) {
+        sortByAge(arrayOFStudents, size);
+    } else if (choice == 7) {
+        sortByProgram(arrayOFStudents, size);
+    } else if (choice == 8) {
+        saveToFile(arrayOFStudents, size, "students.txt");
+    } else if (choice == 9) {
+        loadFromFile(arrayOFStudents, &size, "students.txt");
+    } else {
+        printf("Введите число от 1 до 9.\n");
+        return -1;
+    }
+
+    // Печать информации о студентах
+    for (int i = 0; i < size; i++) {
+        printf("%s %s %d %s\n", arrayOFStudents[i].Name, arrayOFStudents[i].Surname, arrayOFStudents[i].age, arrayOFStudents[i].Programm);
+    }
+
+    return 0;
+}
+
  
 struct Students { 
     char Name[50]; 
