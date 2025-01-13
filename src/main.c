@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "student_manager.h"
+#include "student_manage.h"
 
 int main() {
     struct Students arrayOFStudents[100] = {

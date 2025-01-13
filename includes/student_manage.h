@@ -1,5 +1,5 @@
-#ifndef STUDENT_MANAGER_H
-#define STUDENT_MANAGER_H
+#ifndef STUDENT_MANAGE_H
+#define STUDENT_MANAGE_H
 
 #include <stdio.h>
 
@@ -25,4 +25,4 @@ void sortByProgram(struct Students array[], int size); // Сортировать
 void saveToFile(struct Students array[], int size, const char *filename); // Сохранить данные
 void loadFromFile(struct Students array[], int *size, const char *filename); // Загрузить данные
 
-#endif // STUDENT_MANAGER_H
+#endif // STUDENT_MANAGE_H
