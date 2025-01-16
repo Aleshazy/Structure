@@ -2,16 +2,17 @@
 CC = gcc
 
 # Define the compiler flags
-CFLAGS = -Wall -Wextra -std=c11
+CFLAGS = -Wall -Wextra -std=c11 -I includes
 
 # Define the target executable
 TARGET = main
 
 # Define the source files
-SRCS = src/main.c includes/student_manage.h
+SRCS = src/main.c
 
 # Define the object files
 OBJS = $(SRCS:.c=.o)
+
 
 # Default target
 all: $(TARGET)
@@ -21,7 +22,7 @@ $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
 # Rule to build the object files
-%.o: %.c student_manage.h
+%.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 # Clean up build files
