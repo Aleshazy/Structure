@@ -1,14 +1,7 @@
 #include <stdio.h>
 #include "student_manage.h"
 
- 
-struct Students { 
-    char Name[50]; 
-    char Surname[50]; 
-    int age; 
-    char Programm[50]; 
-}; 
- 
+
 void addStudent(struct Students array[], int *size) { 
     if (*size >= 100) { // max students 100 
      printf ("max students"); 
