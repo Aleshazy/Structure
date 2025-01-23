@@ -3,19 +3,9 @@
 
 
 void addStudent(struct Students array[], int *size) { 
-    if (*size >= 100) { // max students 100 
-     printf ("max students"); 
-        return; 
-    } 
-    printf("Enter Name: "); 
-    scanf("%s", array[*size].Name); 
-    printf("Enter Surname: "); 
-    scanf("%s", array[*size].Surname); 
-    printf("Enter Age: "); 
-    scanf("%d", &array[*size].age); 
-    printf("Enter Program: "); 
-    scanf("%s", array[*size].Programm); 
-    (*size)++; 
+    FILE *fp = fopen(stxt, "a");
+    fprintf(fp, "%d %s %s %d %s\n", student->id, student->name, student->sname, student->age, student->course);
+    fclose(fp);
 } 
  
 void deleteStudent(struct Students array[], int *size, int index) { 
@@ -25,7 +15,7 @@ void deleteStudent(struct Students array[], int *size, int index) {
     } 
     for (int i = index; i < *size - 1; i++) { 
         array[i] = array[i + 1]; 
-    } 
+    } s
     (*size)--; 
 } 
  
@@ -103,7 +93,7 @@ void sortByProgram(struct Students array[], int size) {
     } 
 } 
  
-int main() { 
+int main(int argc, char* argv[]) { 
     struct Students arrayOFStudents[100] = { 
         {"AA", "aa", 18, "PX-23"}, 
         {"aaa", "bb", 17, "PX-24"}, 
@@ -116,9 +106,18 @@ int main() {
     int choice; 
     scanf("%d", &choice); 
  
-    if (choice == 1) { 
-        addStudent(arrayOFStudents, &size); 
-    } else if (choice == 2) { 
+    if (strcmp(argv[1], "add") == 0) { 
+        Student student;
+
+        strcpy(student.Name, argv[2]);
+        strcpy(student.Surnamename, argv[3]);
+        student.age = atoi(argv[4]);
+        strcpy(student.Program, argv[5]);
+
+        addStudent(&student);
+ 
+    } 
+    else if (choice == 2) { 
         int index; 
         printf("Enter index to delete: "); 
         scanf("%d", &index); 
